@@ -1,7 +1,9 @@
 include "console.iol"
 include "string_utils.iol"
 include "math.iol"
-include "mainInterface.iol"
+include "public/interfaces/mainInterface.iol"
+include "public/interfaces/dep1Interface.iol"
+include "public/interfaces/dep2Interface.iol"
 
 execution{ concurrent }
 
@@ -14,13 +16,13 @@ Interfaces: mainInterface
 outputPort dep1Out {
 Location: "socket://localhost:13001"
 Protocol: sodep
-RequestResponse: inc( int )( int )
+Interfaces: dep1Interface, dep2Interface
 }
 
 outputPort dep2Out {
 Location: "socket://localhost:13002"
 Protocol: sodep
-RequestResponse: twice( int )( int )
+Interfaces: dep2Interface
 }
 
 main{

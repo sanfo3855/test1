@@ -1,16 +1,7 @@
 include "../dependencies.ol"
+include "../dep1Out.depservice"
+include "../dep2Out.depservice"
 
-inputPort dep1Out {
-Location: "socket://localhost:13001"
-Protocol: sodep
-RequestResponse: inc( int )( int )
-}
-
-inputPort dep2Out {
-Location: "socket://localhost:13002"
-Protocol: sodep
-RequestResponse: twice( int )( int )
-}
 
 main {
   run( request )( response ){
@@ -47,7 +38,7 @@ main {
     grq.request_message = JDEP_a;
     grq.name = "/mainIn/incNum";
     { goal@GoalManager( grq )( res4 ) | inc( request )( response ){ response = request+1} };
-    expectedResult = JDEP_a+1;
+    expectedResult = JDEP_a;
     if( res4 != expectedResult ){
       fault.message = "Expecting: " + expectedResult + "Found: " + res4;
       fault.faultname = "Failed increment";
