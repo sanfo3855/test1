@@ -11,6 +11,7 @@ main {
     goal@GoalManager( grq )( res1 );
     expectedResult = void;
     if( res1 != expectedResult ){
+      println@Console( "\tExpecting: " + expectedResult + "Found: " + res1 )();
       fault.message = "Expecting: " + expectedResult + "Found: " + res1;
       fault.faultname = "Failed printing";
       throw( ExecutionFault, fault)
@@ -20,6 +21,7 @@ main {
     grq.name = "/mainIn/randomNum";
     goal@GoalManager( grq )( res2 );
     if( !(res2 instanceof double) ){
+      println@Console( "\tExpecting: " + expectedResult + "Found: " + res2 )();
       fault.message = "Expecting: " + "double num" + "Found: " + res2;
       fault.faultname = "Failed random";
       throw( ExecutionFault, fault)
@@ -30,6 +32,7 @@ main {
     goal@GoalManager( grq )( res3 );
     expectedResult = "GABIBBO";
     if( res3 != expectedResult ){
+      println@Console( "\tExpecting: " + expectedResult + "Found: " + res3 )();
       fault.message = "Expecting: " + expectedResult + "Found: " + res3;
       fault.faultname = "Failed upper case";
       throw( ExecutionFault, fault)
@@ -38,8 +41,9 @@ main {
     grq.request_message = JDEP_a;
     grq.name = "/mainIn/incNum";
     { goal@GoalManager( grq )( res4 ) | inc( request )( response ){ response = request+1} };
-    expectedResult = JDEP_a+1;
+    expectedResult = JDEP_a;
     if( res4 != expectedResult ){
+      println@Console( "\tExpecting: " + expectedResult + "Found: " + res4 )();
       fault.message = "Expecting: " + expectedResult + "Found: " + res4;
       fault.faultname = "Failed increment";
       throw( ExecutionFault, fault)
@@ -50,6 +54,7 @@ main {
     { goal@GoalManager( grq )( res5 ) | twice( request )( response ){ response = request*2} };
     expectedResult = JDEP_a * 2;
     if( res5 != expectedResult ){
+      println@Console( "\tExpecting: " + expectedResult + "Found: " + res5 )();
       fault.message = "Expecting: " + expectedResult + "Found: " + res5;
       fault.faultname = "Failed twice";
       throw( ExecutionFault, fault)
