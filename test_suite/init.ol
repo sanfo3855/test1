@@ -1,4 +1,4 @@
-include "dependencies.ol.test"
+include "test_suite/dependencies.ol.test"
 include "../dep1Out.depservice"
 include "../dep2Out.depservice"
 
