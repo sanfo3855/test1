@@ -1,4 +1,4 @@
-include "../dependencies.ol"
+include "dependencies.ol.test"
 include "../dep1Out.depservice"
 include "../dep2Out.depservice"
 
@@ -28,7 +28,7 @@ main {
     grq.request_message = JDEP_gianni;
     grq.name = "/mainIn/toUp";
     goal@GoalManager( grq )( res3 );
-    expectedResult = "MUCIACCIA";
+    expectedResult = "GABIBBO";
     if( res3 != expectedResult ){
       fault.message = "Expecting: " + expectedResult + "Found: " + res3;
       fault.faultname = "Failed upper case";
@@ -47,7 +47,7 @@ main {
 
     grq.request_message = JDEP_a;
     grq.name = "/mainIn/twiceNum";
-    { goal@GoalManager( grq )( res5 ) | twice( request )( response ){ response = 8} };
+    { goal@GoalManager( grq )( res5 ) | twice( request )( response ){ response = request*2} };
     expectedResult = JDEP_a * 2;
     if( res5 != expectedResult ){
       fault.message = "Expecting: " + expectedResult + "Found: " + res5;
