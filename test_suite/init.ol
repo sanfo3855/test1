@@ -1,6 +1,6 @@
 include "./test_suite/dependencies.ol.test"
-include "./dep1Out.depservice"
-include "./dep2Out.depservice"
+include "dep1Out.depservice"
+include "dep2Out.depservice"
 
 
 main {
