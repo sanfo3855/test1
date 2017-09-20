@@ -1,7 +1,11 @@
+interface dep2Interface {
+RequestResponse: twice( int )( int )
+}
+
 inputPort dep2In {
 Location: "socket://localhost:13002"
 Protocol: sodep
-RequestResponse: twice( int )( int )
+Interfaces: dep2Interface
 }
 
 execution{ concurrent }

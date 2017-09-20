@@ -1,9 +1,23 @@
 include "console.iol"
 include "string_utils.iol"
 include "math.iol"
-include "public/interfaces/mainInterface.iol"
-include "public/interfaces/dep1Interface.iol"
-include "public/interfaces/dep2Interface.iol"
+
+interface mainInterface {
+RequestResponse:
+  stampa ( string )( void ),
+  randomNum( void )( double ),
+  toUp( string )( string ),
+  twiceNum( int )( int),
+  incNum( int )( int )
+}
+
+interface dep1Interface {
+RequestResponse: inc( int )( int )
+}
+
+interface dep2Interface {
+RequestResponse: twice( int )( int )
+}
 
 execution{ concurrent }
 
