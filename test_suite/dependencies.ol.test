@@ -1,4 +1,4 @@
 constants {
   JDEP_a = 5,
-  JDEP_gianni = "gabibbo"
+  JDEP_word = "atom"
 }
